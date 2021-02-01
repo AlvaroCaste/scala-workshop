@@ -1,6 +1,8 @@
 
 ThisBuild / scalaVersion := "2.13.4"
 
+lazy val exercise1 = project
+  .in(file("exercises/exercise1"))
 lazy val docs = project
   .in(file("docs"))
   .settings(
