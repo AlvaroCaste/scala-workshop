@@ -1,5 +1,7 @@
 package exercise1
 
+import java.util.UUID
+
 /**
  * Exercise 1.1
  *
@@ -21,3 +23,14 @@ package exercise1
  *
  * Refactor your previous exercise to add those.
  */
+
+sealed trait Event
+
+case class UserLogIn(userId: UUID) extends Event
+case class AddItemToBasket(userId: UUID, itemId: UUID) extends Event
+case class UserIntentPay(userId: UUID) extends Event
+case class PaymentCorrect(userId: UUID, paymentReceipt: String) extends Event
+
+sealed trait PaymentFailure extends Event
+case class TimeoutFailure(userId: UUID, intentId: UUID) extends PaymentFailure
+case class InsufficientFundsFailure(userId: UUID, intentId: UUID) extends PaymentFailure
