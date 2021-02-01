@@ -24,13 +24,16 @@ import java.util.UUID
  * Refactor your previous exercise to add those.
  */
 
-sealed trait Event
+sealed trait Event {
+  def id: UUID
+  def userId: UUID
+}
 
-case class UserLogIn(userId: UUID) extends Event
-case class AddItemToBasket(userId: UUID, itemId: UUID) extends Event
-case class UserIntentPay(userId: UUID) extends Event
-case class PaymentCorrect(userId: UUID, paymentReceipt: String) extends Event
+case class UserLogIn(id: UUID, userId: UUID) extends Event
+case class AddItemToBasket(id: UUID, userId: UUID, itemId: UUID) extends Event
+case class UserIntentPay(id: UUID, userId: UUID) extends Event
+case class PaymentCorrect(id: UUID, userId: UUID, paymentReceipt: String) extends Event
 
 sealed trait PaymentFailure extends Event
-case class TimeoutFailure(userId: UUID, intentId: UUID) extends PaymentFailure
-case class InsufficientFundsFailure(userId: UUID, intentId: UUID) extends PaymentFailure
+case class TimeoutFailure(id: UUID, userId: UUID, intentId: UUID) extends PaymentFailure
+case class InsufficientFundsFailure(id: UUID, userId: UUID, intentId: UUID) extends PaymentFailure
