@@ -3,6 +3,17 @@ ThisBuild / scalaVersion := "2.13.4"
 
 lazy val exercise1 = project
   .in(file("exercises/exercise1"))
+
+lazy val exercise2 = project
+  .in(file("exercises/exercise2"))
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "3.2.3" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.15.2" % Test,
+      "org.scalatestplus" %% "scalacheck-1-15" % "3.2.3.0" % Test
+    )
+  )
+
 lazy val docs = project
   .in(file("docs"))
   .settings(
