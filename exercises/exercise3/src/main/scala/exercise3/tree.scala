@@ -21,10 +21,16 @@ object Tree {
   /**
    * Refactor all the functions we implemented with primitive recursion
    */
-  def height[A](tree: Tree[A]): Int = ???
+  def height[A](tree: Tree[A]): Int = fold(tree)(0, { (l: Int, _: A, r: Int) =>
+    1 + (l.max(r))
+  })
 
-  def sum(tree: Tree[Int]): Int = ???
+  def sum(tree: Tree[Int]): Int = fold(tree)(0, { (l: Int, a: Int, r: Int) =>
+    l + a + r
+  })
 
-  def count[A](tree: Tree[A]): Int = ???
+  def count[A](tree: Tree[A]): Int = fold(tree)(0, { (l: Int, _: A, r: Int) =>
+    1 + l + r
+  })
 
 }
