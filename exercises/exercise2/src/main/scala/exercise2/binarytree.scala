@@ -19,6 +19,9 @@ object Tree {
    * Implement a function height that returns the longest height in a
    * tree
    */
-  def height[A](tree: Tree[A]): Int = ???
+  def height[A](tree: Tree[A]): Int = tree match {
+    case Empty() => 0
+    case Node(l, _, r) => 1 + (height(l).max(height(r)))
+  }
 
 }
