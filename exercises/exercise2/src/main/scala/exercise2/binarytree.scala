@@ -27,5 +27,8 @@ object Tree {
   /**
    * Create a function that sums all the leaves in a Tree[Int]
    */
-  def sum(tree: Tree[Int]): Int = ???
+  def sum(tree: Tree[Int]): Int = tree match {
+    case Empty() => 0
+    case Node(l, x, r) => x + sum(l) + sum(r)
+  }
 }
