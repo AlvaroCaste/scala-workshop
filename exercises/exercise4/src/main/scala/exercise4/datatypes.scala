@@ -2,6 +2,8 @@ package exercise4
 
 import java.util.Random
 
+import scala.util.Try
+
 object Exercise4 {
   val random = new Random
 
@@ -17,7 +19,7 @@ object Exercise4 {
    */
   def useOption: Option[String] = Option(maybeString)
 
-  val stringOrThrow =
+  val stringOrThrow: String =
     if (random.nextBoolean) {
       "it's not null"
     } else {
@@ -27,10 +29,6 @@ object Exercise4 {
   /**
    * reimplement this using try
    */
-  def useTry = try {
-    stringOrThrow
-  } catch {
-    case e: Throwable => throw e
-  }
+  def useTry: Try[String] = Try(stringOrThrow)
 
 }
