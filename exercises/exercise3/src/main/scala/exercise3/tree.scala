@@ -33,4 +33,9 @@ object Tree {
     1 + l + r
   })
 
+  /**
+   * Implement the map function based on fold
+   */
+  def map[A, B](tree: Tree[A])(fn: A => B): Tree[B] = ???
+
 }
