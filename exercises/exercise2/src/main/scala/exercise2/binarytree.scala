@@ -44,5 +44,11 @@ object Tree {
    * Create a function that transforms each element in a tree into it's
    * string representation
    */
-  def toStringNodes(tree: Tree[Int]): Tree[String] = ???
+  def toStringNodes(tree: Tree[Int]): Tree[String] = tree match {
+    case Empty() => Empty()
+    case Node(l, x, r) => Node(
+      toStringNodes(l),
+      x.toString,
+      toStringNodes(r))
+  }
 }
