@@ -51,4 +51,9 @@ object Tree {
       x.toString,
       toStringNodes(r))
   }
+
+  /**
+   * Create a function that squares all elements in an Int tree
+   */
+  def squared(tree: Tree[Int]): Tree[Int] = ???
 }
