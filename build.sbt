@@ -20,6 +20,11 @@ lazy val exercise3 = project
 lazy val exercise4 = project
   .in(file("exercises/exercise4"))
 
+lazy val exercise5 = project
+  .in(file("exercises/exercise5"))
+  .dependsOn(exercise3)
+  .settings(libraryDependencies ++= dependencies)
+
 lazy val docs = project
   .in(file("docs"))
   .settings(
@@ -34,9 +39,11 @@ lazy val docs = project
     addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.11.3" cross CrossVersion.full),
     mdocIn := baseDirectory.value / "mdoc",
     mdocOut := baseDirectory.value / "mdoc-out",
-    libraryDependencies ++= Seq(
-      "org.scalacheck" %% "scalacheck" % "1.15.2",
-      "org.typelevel" %% "cats-core" % "2.3.1"
-    )
+    libraryDependencies ++= dependencies
   )
   .enablePlugins(MdocPlugin)
+
+lazy val dependencies = Seq(
+  "org.scalacheck" %% "scalacheck" % "1.15.2",
+  "org.typelevel" %% "cats-core" % "2.3.1"
+)
