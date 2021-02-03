@@ -35,5 +35,8 @@ object Tree {
   /**
    * Create a function that counts all the leaves in a tree
    */
-  def count[A](tree: Tree[A]): Int = ???
+  def count[A](tree: Tree[A]): Int =  tree match {
+    case Empty() => 0
+    case Node(l, _, r) => 1 + count(l) + count(r)
+  }
 }
