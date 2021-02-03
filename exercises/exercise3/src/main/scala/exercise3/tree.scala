@@ -41,4 +41,10 @@ object Tree {
       Node[B](l, fn(a), r)
   })
 
+  /**
+   * refactor toStringNodes & squared to be based on map instead of fold
+   */
+  def toStringNodes(tree: Tree[Int]): Tree[String] = ???
+
+  def squared(tree: Tree[Int]): Tree[Int] = ???
 }
