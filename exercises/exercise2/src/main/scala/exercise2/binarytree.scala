@@ -10,3 +10,5 @@ package exercise2
  * https://en.wikipedia.org/wiki/Binary_tree
  */
 sealed trait Tree[A]
+case class Empty[A]() extends Tree[A]
+case class Node[A](l: Tree[A], a: A, r: Tree[A]) extends Tree[A]
