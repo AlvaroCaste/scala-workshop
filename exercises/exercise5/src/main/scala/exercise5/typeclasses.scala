@@ -74,4 +74,10 @@ object typeclasses {
     def squared[F[_]: Functor](f: F[Int]): F[Int] =
       Functor[F].map(f)(x => x * x)
   }
+
+  /**
+   * Abstract this function further
+   */
+  def sumX[F[_]](f: F[Int])(implicit F: Foldable[F]): Int =
+    F.foldLeft(f, 0)(_ + _)
 }
