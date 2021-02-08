@@ -40,15 +40,23 @@ object typeclasses {
   case class Just[A](a: A) extends Maybe[A]
 
   implicit val maybeMonad: Monad[Maybe] = new Monad[Maybe] {
-    override def pure[A](x: A): Maybe[A] = ???
+    override def pure[A](x: A): Maybe[A] = Just(x)
 
-    override def flatMap[A, B](fa: Maybe[A])(f: A => Maybe[B]): Maybe[B] = ???
+    override def flatMap[A, B](fa: Maybe[A])(f: A => Maybe[B]): Maybe[B] = fa match {
+      case Nothing() => Nothing[B]()
+      case Just(a) => f(a)
+    }
 
     /**
      * This method was not originally part of the Monad typeclass,
      * although is added for performance
+     * More about: https://typelevel.org/cats/faq.html#tailrecm
      */
-    override def tailRecM[A, B](a: A)(f: A => Maybe[Either[A, B]]): Maybe[B] = ???
+    override def tailRecM[A, B](a: A)(f: A => Maybe[Either[A, B]]): Maybe[B] = f(a) match {
+      case Nothing() => Nothing[B]()
+      case Just(Right(b)) => Just(b)
+      case Just(Left(a1)) => tailRecM(a1)(f)
+    }
 
   }
 }
