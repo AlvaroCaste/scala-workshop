@@ -1,6 +1,6 @@
 package exercise5
 
-import cats.{Eq, Eval, Foldable, Functor, Monad}
+import cats.{Eval, Foldable, Functor, Monad}
 import exercise3.{Empty, Node, Tree}
 
 object typeclasses {
@@ -58,5 +58,16 @@ object typeclasses {
       case Just(Left(a1)) => tailRecM(a1)(f)
     }
 
+    /**
+     * Parametrize the following functions to work on typeclasses, not
+     * directly on trees.
+     */
+    def sum[F[_]](f: Tree[Int]): Int = ???
+
+    def count[Tree[_], A](f: Tree[A]): Int = ???
+
+    def toStringNodes[Tree[_]](f: Tree[Int]): Tree[String] = ???
+
+    def squared[Tree[_]](f: Tree[Int]): Tree[Int] = ???
   }
 }
