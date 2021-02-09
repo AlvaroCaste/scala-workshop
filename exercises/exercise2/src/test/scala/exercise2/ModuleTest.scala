@@ -13,9 +13,8 @@ class ModuleTest extends AnyFlatSpec with Matchers {
   }
 
   it should "be a product" in {
-    fail("Uncomment and fix")
-    //    Module.productPrefix shouldBe "Module"
-    //    Module.productArity shouldBe 0
-    //    Module.productIterator shouldBe 'empty
+    Module.productPrefix shouldBe "Module"
+    Module.productArity shouldBe 0
+    Module.productIterator shouldBe Symbol("empty")
   }
 }
