@@ -9,6 +9,8 @@ trait NewOrderConverter[F[_]] {
 }
 
 object NewOrderConverter {
+  def apply[F[_]](implicit F: NewOrderConverter[F]): NewOrderConverter[F] = F
+
   implicit val impl: NewOrderConverter[Future] =
     new NewOrderConverter[Future] {
       def convert(response: Response, order: Order): Future[Order] =

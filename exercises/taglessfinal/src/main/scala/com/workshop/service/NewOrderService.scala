@@ -11,6 +11,8 @@ trait NewOrderService[F[_]] {
 }
 
 object NewOrderService {
+  def apply[F[_]](implicit F: NewOrderService[F]): NewOrderService[F] = F
+
   implicit def impl(implicit NOC: NewOrderConverter[Future]): NewOrderService[Future] =
     new NewOrderService[Future] {
       def newOrder(order: Order): Future[Order] =

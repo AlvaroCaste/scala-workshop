@@ -7,6 +7,8 @@ trait PublishEventService[F[_]] {
 }
 
 object PublishEventService {
+  def apply[F[_]](implicit F: PublishEventService[F]): PublishEventService[F] = F
+
   implicit val impl: PublishEventService[Future] =
     new PublishEventService[Future] {
       def publish[A](event: A): Future[Unit] =
