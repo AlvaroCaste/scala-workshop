@@ -27,7 +27,9 @@ lazy val exercise5 = project
 
 lazy val taglessfinal = project
   .in(file("exercises/taglessfinal"))
-  .settings(libraryDependencies ++= dependencies)
+  .settings(libraryDependencies ++=
+    dependencies :+
+      "org.typelevel" %% "cats-effect" % "2.3.1")
 
 lazy val docs = project
   .in(file("docs"))

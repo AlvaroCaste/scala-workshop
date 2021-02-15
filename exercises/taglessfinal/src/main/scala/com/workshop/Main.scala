@@ -1,14 +1,12 @@
 package com.workshop
 
+import cats.effect.IO
 import com.workshop.model.Order
 import com.workshop.service.{NewOrderService, PublishEventService}
 
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
-
 object Main extends App {
-  for {
-    newOrder <- NewOrderService[Future].newOrder(Order("id"))
-    _ <- PublishEventService[Future].publish(newOrder)
-  } yield ()
+  (for {
+    newOrder <- NewOrderService[IO].newOrder(Order("id"))
+    _ <- PublishEventService[IO].publish(newOrder)
+  } yield ()).unsafeRunSync()
 }

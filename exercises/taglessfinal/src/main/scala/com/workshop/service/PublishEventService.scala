@@ -1,5 +1,7 @@
 package com.workshop.service
 
+import cats.effect.IO
+
 import scala.concurrent.Future
 
 trait PublishEventService[F[_]] {
@@ -13,5 +15,11 @@ object PublishEventService {
     new PublishEventService[Future] {
       def publish[A](event: A): Future[Unit] =
         Future.successful(println(s"event published: $event"))
+    }
+
+  implicit val implIO: PublishEventService[IO] =
+    new PublishEventService[IO] {
+      def publish[A](event: A): IO[Unit] =
+        IO.pure(println(s"event published: $event"))
     }
 }
