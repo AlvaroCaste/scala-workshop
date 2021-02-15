@@ -25,6 +25,10 @@ lazy val exercise5 = project
   .dependsOn(exercise3)
   .settings(libraryDependencies ++= dependencies)
 
+lazy val taglessfinal = project
+  .in(file("exercises/taglessfinal"))
+  .settings(libraryDependencies ++= dependencies)
+
 lazy val docs = project
   .in(file("docs"))
   .settings(
