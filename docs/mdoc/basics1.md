@@ -32,6 +32,42 @@ date: 2021-01-29
 >- Higher kinded types
 >- Immutability
 
+# Object Oriented vs FP equivalent
+
+::: columns
+:::: {.column width=50% }
+## pattern/principle
+
+>- SRP
+>- Open/Closed Principle
+>- Dependency Inversion
+>- Interface Segregation
+>- Factory pattern
+>- Strategy pattern
+>- Decorator pattern
+>- Visitor pattern
+
+::::
+:::: {.column width=50%}
+## Fp equivalent
+
+>- Functions
+>- Functions
+>- Functions
+>- Functions
+>- Functions
+>- Functions
+>- Functions
+>- Functions
+
+::::
+:::
+
+# Object Oriented vs FP equivalent
+
+The problem is Functional patterns are different
+
+
 # Static typing
 
 ::: columns
