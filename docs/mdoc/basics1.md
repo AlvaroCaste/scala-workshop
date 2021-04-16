@@ -65,7 +65,9 @@ date: 2021-01-29
 
 # Object Oriented vs FP equivalent
 
-The problem is Functional patterns are different
+The problem about Functional is:
+- Patterns are different
+- Mathematical concepts can be scare
 
 
 # Static typing
